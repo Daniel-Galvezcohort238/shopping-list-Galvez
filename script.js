@@ -93,6 +93,10 @@ function removeItem(e) {
 
     }
 
+    if (document.querySelectorAll('li').length == 0) {
+        addButton.innerHTML = '<i class="fa-solid"></i> Add Item';
+    }
+
 }
 
 // function removeItem1(e) {
