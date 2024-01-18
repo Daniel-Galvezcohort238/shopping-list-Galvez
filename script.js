@@ -5,8 +5,10 @@ const addButton = document.getElementById('add-button');
 function buttonClicked(e) {
     e.preventDefault();
     const text = document.getElementById('item-input').value;
+    document.getElementById('item-input').value = '';
 
     if (isEditMode) {
+        console.log('if isEditMode works')
         updateItem(text);
     } else {
         const listItems = document.querySelectorAll('li');
@@ -66,6 +68,8 @@ function removeItem(e) {
 
     for (let item = 0; item < list.length; item++) {
 
+        console.log(list[item].parentElement == e.target);
+
         if (list[item] == e.target) {
             e.target.parentElement.remove();
             removeItemFromStorage(e.target.parentElement.firstChild.textContent)
@@ -74,7 +78,8 @@ function removeItem(e) {
             e.target.parentElement.parentElement.remove();
             removeItemFromStorage(e.target.parentElement.parentElement.firstChild.textContent)
             break;
-        } else if (list[item].parent = e.target) {
+        } else if (list[item].parentElement == e.target) {
+            console.log('else if li == li works')
             liClicked(e.target);
             break;
         }
