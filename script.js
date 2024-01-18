@@ -94,7 +94,7 @@ function removeItem(e) {
     }
 
     if (document.querySelectorAll('li').length == 0) {
-        addButton.innerHTML = '<i class="fa-solid"></i> Add Item';
+        addButton.innerHTML = '<i class="fa-solid fa-plus"></i> Add Item';
     }
 
 }
@@ -221,7 +221,7 @@ function updateItem(newText) {
     //undo edit mode
     isEditMode = false;
     editingItem.classList.remove('edit-mode');
-    addButton.innerHTML = '<i class="fa-solid"></i> Add Item';
+    addButton.innerHTML = '<i class="fa-solid fa-plus"></i> Add Item';
 
 }
 
