@@ -67,19 +67,26 @@ function removeItem(e) {
     const list = document.querySelectorAll('.remove-item');
 
     for (let item = 0; item < list.length; item++) {
-
-        console.log(list[item].parentElement == e.target);
+        const parent = e.target.parentElement
+        const parentParent = e.target.parentElement.parentElement
 
         if (list[item] == e.target) {
-            e.target.parentElement.remove();
-            removeItemFromStorage(e.target.parentElement.firstChild.textContent)
+            if(parent == document.querySelector('.edit-mode')) {
+                isEditMode = false;
+            }
+            parent.remove();
+            removeItemFromStorage(parent.firstChild.textContent)
+            console.log(isEditMode);
             break;
-        } else if (list[item] == e.target.parentElement) {
-            e.target.parentElement.parentElement.remove();
-            removeItemFromStorage(e.target.parentElement.parentElement.firstChild.textContent)
+        } else if (list[item] == parent) {
+            if(parentParent == document.querySelector('.edit-mode')) {
+                isEditMode = false;
+            }
+            parentParent.remove();
+            removeItemFromStorage(parentParent.firstChild.textContent)
+            console.log(isEditMode);
             break;
         } else if (list[item].parentElement == e.target) {
-            console.log('else if li == li works')
             liClicked(e.target);
             break;
         }
@@ -181,7 +188,7 @@ filter.addEventListener('input', filtering);
 let isEditMode = false;
 
 function liClicked(li) {
-
+    console.log(isEditMode);
     if (isEditMode) {
         document.querySelector('.edit-mode').classList.remove('edit-mode');
     }
